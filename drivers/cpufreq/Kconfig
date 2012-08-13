@@ -139,6 +139,13 @@ config CPU_FREQ_DEFAULT_GOV_IMPULSE
 	  loading your cpufreq low-level hardware driver, using the
 	  'impulse' governor for latency-sensitive workloads.
 
+config CPU_FREQ_DEFAULT_GOV_SAVAGEDZEN
+   bool "savagedzen"
+   select CPU_FREQ_GOV_SAVAGEDZEN
+   select CPU_FREQ_GOV_PERFORMANCE
+   help
+     Use the CPUFreq governor 'lionheart' as default. 
+
 endchoice
 
 config CPU_FREQ_GOV_PERFORMANCE
@@ -403,6 +410,15 @@ config QORIQ_CPUFREQ
 	help
 	  This adds the CPUFreq driver support for Freescale QorIQ SoCs
 	  which are capable of changing the CPU's frequency dynamically.
+
+config CPU_FREQ_GOV_SAVAGEDZEN
+  tristate "'savagedzen' cpufreq governor"
+  depends on CPU_FREQ
+
+menu "x86 CPU frequency scaling drivers"
+depends on X86
+source "drivers/cpufreq/Kconfig.x86"
+endmenu
 
 endif
 endmenu
