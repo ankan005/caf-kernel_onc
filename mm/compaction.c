@@ -1360,8 +1360,8 @@ static enum compact_result __compact_finished(struct zone *zone, struct compact_
 		 * other migratetype buddy lists.
 		 */
 		if (find_suitable_fallback(area, order, migratetype,
-						true, &can_steal, cc->order) != -1)
-			return COMPACT_SUCCESS;
+					   true, cc->order, &can_steal) != -1)
+			return COMPACT_PARTIAL;
 	}
 
 	return COMPACT_NO_SUITABLE_PAGE;
