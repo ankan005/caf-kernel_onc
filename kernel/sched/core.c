@@ -4204,6 +4204,17 @@ __setparam_dl(struct task_struct *p, const struct sched_attr *attr)
 	 */
 }
 
+unsigned long sched_get_busy(int cpu)
+{
+      struct cpumask query_cpu = CPU_MASK_NONE;
+      struct sched_load busy;
+
+      cpumask_set_cpu(cpu, &query_cpu);
+      sched_get_cpus_busy(&busy, &query_cpu);
+
+      return busy.prev_load;
+}
+
 /*
  * sched_setparam() passes in -1 for its policy, to let the functions
  * it calls know not to change it.
