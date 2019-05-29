@@ -146,6 +146,12 @@ config CPU_FREQ_DEFAULT_GOV_SAVAGEDZEN
    help
      Use the CPUFreq governor 'lionheart' as default. 
 
+config CPU_FREQ_DEFAULT_GOV_DYNAMIC_INTERACTIVE
+        bool "dynamic_interactive"
+        select CPU_FREQ_GOV_DYNAMIC_INTERACTIVE
+        help
+          Use the CPUFreq governor 'dynamic_interactive' as default
+
 endchoice
 
 config CPU_FREQ_GOV_PERFORMANCE
@@ -414,6 +420,10 @@ config QORIQ_CPUFREQ
 config CPU_FREQ_GOV_SAVAGEDZEN
   tristate "'savagedzen' cpufreq governor"
   depends on CPU_FREQ
+
+config CPU_FREQ_GOV_DYNAMIC_INTERACTIVE
+	tristate "'dynamic_interactive' cpufreq governor"
+	depends on CPU_FREQ
 
 menu "x86 CPU frequency scaling drivers"
 depends on X86
