@@ -419,6 +419,10 @@ static void __cpufreq_notify_transition(struct cpufreq_policy *policy,
 	pr_debug("notification %u of frequency transition to %u kHz\n",
 		 state, freqs->new);
 
+#if defined(CONFIG_MACH_M0) || defined(CONFIG_MACH_M3)
+	if ((new_policy.max == 1920000) || (new_policy.max == 2000000))
+                return -EINVAL;
+#endif
 	switch (state) {
 
 	case CPUFREQ_PRECHANGE:
