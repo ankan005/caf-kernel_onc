@@ -113,6 +113,11 @@ enum usb_id_state {
 	USB_ID_FLOAT,
 };
 
+#define IDEV_CHG_MAX 2000
+#define IUNIT 100
+#define IDEV_HVDCP_CHG_MAX	2000
+#define IDEV_CHG_MIN 2000
+
 #define USB_NUM_BUS_CLOCKS      3
 
 /**
